@@ -1,0 +1,118 @@
+\documentclass[a4paper,twocolumn,10pt]{article}
+%\usepackage[spanish]{babel}
+%\usepackage[latin1]{inputenc}
+\usepackage{graphicx}
+\usepackage{flushend}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}%arial
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[utf8]{inputenc}%acentos sin codigo
+\usepackage[spanish,es-tabla]{babel} %tablas no cuadros
+\parindent=0.7cm %sangria % ojo
+\usepackage{amsmath} %simbolos matematicos
+\usepackage{amssymb,amsfonts,latexsym,cancel}
+\usepackage{array}
+\usepackage{bm} %negritas
+\usepackage{float} %ubicar figuras
+\usepackage{fancyhdr} %darle formato al documento
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{geometry}
+\usepackage{siunitx}
+
+%Comandos que yo agregue
+\usepackage{comment}
+\newcommand{\grad}{$^{\circ}$ }
+\usepackage{booktabs}
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+
+\geometry{
+	lmargin=2cm,rmargin=2cm,top=1cm,bottom=2cm,includeheadfoot}
+\usepackage{titlesec}
+\titleformat*{\section}{\small\bfseries\sffamily}
+\titleformat*{\subsection}{\small\bfseries\sffamily}
+\titleformat*{\subsubsection}{\small\bfseries\sffamily}
+\titleformat*{\paragraph}{\small\bfseries\sffamily}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{Diseño e Implementación de un Sistema de Determinación y  Control de Actitud para CubeSats}
+\rhead{}
+\lfoot{Facultad de Ingeniería -- UNA}
+\rfoot{Diciembre, 2020}
+%\renewcommand{\footrulewidth}{1.5pt}
+
+\fancypagestyle{firststyle}
+{
+	\fancyhf{}
+	\fancyfoot[C]{\footnotesize \thepage}
+	\fancyfoot[L]{Facultad de Ingeniería -- UNA}
+	\fancyfoot[R]{Mayo, 2023}
+	\fancyhead[L]{\includegraphics[height=1.5cm]{Figuras/Fiuna.png}}
+	\fancyhead[R]{\includegraphics[height=1.5cm]{Figuras/Logo_UNA.jpg}}
+	\fancyhead[C]{Resumen Técnico\\ \text{}}
+	%\renewcommand{\footrulewidth}{1.5pt}
+
+}
+\renewcommand{\headrulewidth}{1.5pt}
+%\usepackage{graphicx}
+%\setlength{\columnsep}{distance}
+\usepackage{multicol}
+%\thispagestyle{firststyle}
+%\usepackage{microtype}
+%\usepackage{vwcol}
+
+%\usepackage{tabularx}
+%    \newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+\usepackage[normalem]{ulem}
+
+\usepackage[labelfont=bf]{caption}
+
+\usepackage{authblk}
+\renewcommand\Authands{, }
+%\renewcommand{\lastandname}{\unskip}
+
+%\normalsize
+
+\begin{document}
+
+\title{\large Implementación de un ChatBot utilizando algoritmos de Inteligencia Artificial.}
+%\author[3]{Msc. Enrique G. Paiva}
+%\author[3]{Dr. Diego H. Stalder}
+%\author[3]{Msc. Sergio R. Toledo}
+\author[1]{\small Carlos Buenaventura Ozuna Loncharich}
+\author[2]{Oscar Bartolome Valdez Sarubbi}
+\author[3]{Prof. Ing. Aurora Nuñez }
+
+
+\affil[1]{Alumno, Facultad de Ingeniería. Universidad Nacional de Asunción. San Lorenzo, Paraguay}
+\affil[2]{Alumno, Facultad de Ingeniería. Universidad Nacional de Asunción. San Lorenzo, Paraguay}
+\affil[3]{Orientadora, Facultad de Ingeniería. Universidad Nacional de Asunción. San Lorenzo, Paraguay}
+%\affil[1]{Alumno, ovaldez@ing.una.py, Facultad de Ingeniería. Universidad Nacional de
+%	Asunción. San Lorenzo, Paraguay}
+%\affil[2]{Alumno, guille94arguello@gmail.com, Facultad de Ingeniería. Universidad Nacional de
+%	Asunción. San Lorenzo, Paraguay}
+%\affil[3]{Orientador, Facultad de Ingeniería. Universidad Nacional de Asunción. San Lorenzo,
+%	Paraguay}
+
+\date{}
+%\vspace{-5cm}
+
+\input{abstract}%ozuna
+
+\input{introduccion}%ozuna
+
+
+\input{marco_teorico}%oscar-ozuna
+
+\input{implementacion}%oscar
+
+\input{conclusiones}
+
+\bibliographystyle{IEEEtran}
+\bibliography{Biblio_res}
+\end{document}
