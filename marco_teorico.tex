@@ -11,7 +11,7 @@ El Procesamiento de Lenguaje Natural (NPL por sus siglas en inglés) es un campo
 Existen varios métodos utilizados a lo largo de la historia del Procesamiento de Lenguaje Natural.\\
 Los primeros intentos fueron mediante reglas de acciones manuales por medio de árboles de decisión, conocidos como métodos heurísticos o basados en reglas. Este método requiere que los desarrolladores tengan experiencia en el dominio del problema para formular las reglas que puedan ser incorporadas al programa, utilizan bastante los diccionarios y las expresiones regulares.\\
 \indent Posteriormente vinieron los métodos basados en aprendizaje automático, como la clasificación y regresión, que son utilizados con frecuencia en NLP.\\
-\indent Finalmente, el Aprendizaje profundo o Deep learning(DL), una evolución mas compleja de los algoritmos de ML convencionales trajeron nuevas oportunidades al Procesamiento de Lenguaje Natural, un claro ejemplo son las Redes Neuronales Recurrentes (RNN)que están específicamente diseñadas para mantener un procesamiento secuencial y memoria de los pasos anteriores. Esta memoria es temporal, la información es almacenada y actualizada en cada paso de lectura de la RNN. Las RNNs son poderosas y funcionan muy bien en la clasificación de textos, reconocimiento de entidades, traducción automática, y pueden utilizarse para generar textos, por ejemplo para predecir la siguiente palabra a escribirse de acuerdo al contexto de la conversación. A pesar de su versatilidad y capacidad, las RNNs sufren de ciertas limitaciones por contar con memoria temporal, por lo tanto no se desempeñan óptimamente
+\indent Finalmente, el Aprendizaje profundo o Deep learning(DL), una evolución más compleja de los algoritmos de ML convencionales trajeron nuevas oportunidades al Procesamiento de Lenguaje Natural, un claro ejemplo son las Redes Neuronales Recurrentes (RNN)que están específicamente diseñadas para mantener un procesamiento secuencial y memoria de los pasos anteriores. Esta memoria es temporal, la información es almacenada y actualizada en cada paso de lectura de la RNN. Las RNNs son poderosas y funcionan muy bien en la clasificación de textos, reconocimiento de entidades, traducción automática, y pueden utilizarse para generar textos, por ejemplo para predecir la siguiente palabra a escribirse de acuerdo al contexto de la conversación. A pesar de su versatilidad y capacidad, las RNNs sufren de ciertas limitaciones por contar con memoria temporal, por lo tanto no se desempeñan óptimamente
 para textos con largos contextos.\\
 \indent Las Redes Neuronales Convencionales (CNN)s también vieron éxito en NLP, específicamente en la clasificación de texto. Se puede reemplazar una palabra de una oración de un texto por un vector palabra, y estos a su vez son colocados en una matriz para poder ser tratados de manera similar a una imagen.\\
 \indent Los transformadores son la última innovación en lo que respecta a modelos basados en DL para NLP. Los modelos de transformadores obtuvieron avances en la mayoría de las tareas de NLP en los últimos años. Estos modelan el contexto textual pero no de manera secuencial. Dada una palabra en una entrada de texto, se prefiere mirar las demás palabras vecinas en el texto y representar cada palabra de acuerdo al contexto de las demás.
@@ -30,7 +30,7 @@ Todos los chatbots deben contar con las siguientes cualidades. \cite{evaluating_
 \begin{itemize}
     \item Rendimiento: se refiere a la eficiencia en la asignación de funciones y a la robustez que tienen en cuanto a la manipulación y a las entradas inesperadas.
     \item Funcionalidad: es capaz de interpretar, responder y ejecutar  correctamente las tareas demandadas.
-    \item Humanidad: la conversación con el chatbot debe ser natural, lo mas parecida a la humana.
+    \item Humanidad: la conversación con el chatbot debe ser natural, lo más parecida a la humana.
     \item Ética: genera confianza, respeta y protege la dignidad, y la privacidad de los usuarios.
     \item Accesibilidad: se encuentra disponible cuando el usuario quiera usarlo, además se refiere a que es capaz de detectar intenciones y significados
 \end{itemize}
@@ -48,13 +48,13 @@ Todos los chatbots deben contar con las siguientes cualidades. \cite{evaluating_
         Amazon Lex permite la integración con aplicaciones web, móviles y los servicios propios de Amazon como Amazon Kendra, Amazon Polly o AWS Lambda.\\\cite{Amazon_Lex}
     \item \textbf{RASA Open Source:}
     Es una plataforma de código abierto que proporciona procesamiento de lenguaje natural para convertir los mensajes de los usuarios en intenciones y entidades que los chatbots entienden, permite la gestión de los diálogos basándose en los mensajes de los usuarios y el contexto de la conversación.\\
-    La integración a las aplicaciones mas comunes de mensajes y a los canales de voz se puede hacer de forma muy sencilla con los conectores ya incorporados, para conectar a las demás aplicaciones móviles o web se deben personalizar los conectores.\\\cite{Rasa}
+    La integración a las aplicaciones más comunes de mensajes y a los canales de voz se puede hacer de forma muy sencilla con los conectores ya incorporados, para conectar a las demás aplicaciones móviles o web se deben personalizar los conectores.\\\cite{Rasa}
     \item \textbf{Chatterbot:}
     Chatterbot es una librería de Python que facilita la automatización de respuestas mediante  distintos algoritmos de aprendizaje automático, esto permite que una instancia de agente mejore su propio conocimiento de las posibles respuestas a medida que interactúa con humanos y otras fuentes de datos informativos\\
     Se puede integrar a las aplicaciones mediante APIs, además ChatterBot tiene soporte directo para la integración con el ORM de Django, esto facilita bastante para crear las páginas conversacionales.\cite{Chatterbot}\\
 \end{itemize}
 
-\indent Haciendo una comparación entre todas las herramientas analizadas, vemos que la creación de los chatbots con Dialogflow, IBM Watson y Amazon Lex es mucho mas sencilla, ya que tienen una madurez tecnológica muy alta, gran soporte y las interfaces son muy intuitivas, además no requieren de mucha programación. La mayor desventaja es que las versiones que cuentan con todas las funcionalidades son de paga, y las versiones gratuitas son muy limitadas y básicas, por lo que descartamos estas tres opciones.\\
+\indent Haciendo una comparación entre todas las herramientas analizadas, vemos que la creación de los chatbots con Dialogflow, IBM Watson y Amazon Lex es mucho más sencilla, ya que tienen una madurez tecnológica muy alta, gran soporte y las interfaces son muy intuitivas, además no requieren de mucha programación. La mayor desventaja es que las versiones que cuentan con todas las funcionalidades son de paga, y las versiones gratuitas son muy limitadas y básicas, por lo que descartamos estas tres opciones.\\
 \indent En cuanto a Chatterbot y RASA, la curva de aprendizaje puede ser un poco mayor porque no utilizan interfaces gráficas, todo es programado con Python, un lenguaje muy versátil que cuenta con numerosas librerías, esto permite tener mayor control sobre los chatbots porque se pueden manipular todos los ficheros y modificar las configuraciones, Si bien ambos están muy bien documentados, RASA destaca de Chatterbot por su comunidad, cuenta incluso con un foro donde participan los desarrolladores y usuarios dispuestos a brindar ayuda a todo aquel que las necesite.\\
 \indent Teniendo en cuenta que no contamos con experiencia en el desarrollo de chatbots, se valora de sobremanera la comunidad, documentación y tutoriales con los que cuenta RASA, además que permite la integración con distintas plataformas y el lenguaje de programación que utiliza (Python) es de nuestro conocimiento, es por eso que concluimos con que RASA es una buena elección para llevar a cabo este proyecto.
 \subsection{Rasa Open Source}
@@ -106,9 +106,9 @@ Antes de profundizar en la plataforma elegida para la elaboración del proyecto,
 Para llevar a cabo las conversaciones se utilizan las dos librerías del Rasa Stack.
 \begin{itemize}
     \item \textbf{Rasa NLU: } En ella  se escriben los archivos de configuración, se elige el pipeline y el modelo de entrenamiento para que deduzca las intenciones y posteriormente pueda extraer las entidades disponibles.\\
-    \indent Puede ser basado en reglas o en redes neuronales, el primero suele ser mas ligero y no necesita de muchos datos aunque no son buenos en tareas antes no vistas, mientras que el segundo necesita de mas capacidad de cómputo y datos para entrenamiento, son mas flexibles que los basados en reglas, ya que pueden aprender cosas que no han visto antes.
+    \indent Puede ser basado en reglas o en redes neuronales, el primero suele ser más ligero y no necesita de muchos datos aunque no son buenos en tareas antes no vistas, mientras que el segundo necesita de más capacidad de cómputo y datos para entrenamiento, son más flexibles que los basados en reglas, ya que pueden aprender cosas que no han visto antes.
     \item \textbf{Rasa Core: } es el gestor de diálogos utilizado para crear modelos que sean capaces de decidir que respuestas o acciones se ejecutarán de acuerdo a las entradas generadas por el usuario.\\
-    También puede ser basado en reglas, que es el enfoque mas tradicional, funciona muy bien en muchos casos pero es difícil de expandir las conversaciones, también puede ser basado en redes neuronales que escoge la siguiente acción basándose en la conversación y en los ejemplos del entrenamiento.
+    También puede ser basado en reglas, que es el enfoque más tradicional, funciona muy bien en muchos casos pero es difícil de expandir las conversaciones, también puede ser basado en redes neuronales que escoge la siguiente acción basándose en la conversación y en los ejemplos del entrenamiento.
 \end{itemize}
 \indent Básicamente, Rasa NLU se encarga de interpretar los mensajes y Rasa Core de de decidir que acción tomar.\\
 \indent Para asegurarnos de que una conversación funcione se utiliza un proceso denominado ‘conversation-driven development’ que consiste en revisar manualmente las conversaciones para detectar cualquier error cometido, agregar nuevos datos de entrenamiento, volver a entrenar el modelo y probarlo nuevamente. \cite{Introduction_to_Rasa}
@@ -133,7 +133,7 @@ un conjunto de carpetas y archivos así como se muestra en la siguiente figura.
 \subsubsection{Archivo nlu}
 En él se encuentran datos estructurados que sirven para entrenar el modelo y luego extraer la información de los mensajes del usuario. Estos datos son  las intenciones y entidades, también se pueden agregar expresiones regulares y algunas tablas de búsqueda. \cite{NLU_Documentation}
 \subsubsection{Archivo Rules}
-En este archivo se definen las reglas, que no son mas que  tipo de datos de entrenamiento encargados de describir partes de una conversación que siempre sigue el mismo camino.\cite{Rules_Documentation}
+En este archivo se definen las reglas, que no son más que  tipo de datos de entrenamiento encargados de describir partes de una conversación que siempre sigue el mismo camino.\cite{Rules_Documentation}
 \subsubsection{Archivo Stories}
 Las historias son un tipo de datos de entrenamiento, se utiliza para entrenar modelos que puedan generalizar las rutas de conversación. Las entradas del usuario son expresadas mediante intents, y entitites si es necesario,  mientras que las respuestas del asistente son expresadas mediante actions.\\
 Los patrones que siguen las conversaciones podemos extraer de datos ya existentes o con la herramienta de rasa 'interactive learning'. \cite{Stories_Documentation}
@@ -142,7 +142,7 @@ En el archivo config se definen el lenguaje y los componentes del pipeline, que 
 El pipeline es el encargado de definir la dirección de flujo de datos entre los diferentes componentes, Rasa nos permite configurar cada uno de ellos según nuestras necesidades, de tal forma que podamos realizar las predicciones de las intenciones y la extracción de las entidades. Las políticas forman parte de la gestión de diálogos, encargada de seleccionar la siguiente acción a ser ejecutada. \cite{Configuration_Documentation}
 La configuración del pipeline y las políticas son de suma importancia, por lo que se detallaran sus componentes en otra sección.
 \subsubsection{Archivo credentials}
-Aquí se definen los credenciales para las plataformas de voz y chat que el bot utiliza. Rasa cuenta con algunos conectores preestablecidos para los canales mas conocidos como Facebook Messenger, Telegram, Google Hangouts Chat o una pagina web propia. \cite{Credentials_Documentation}
+Aquí se definen los credenciales para las plataformas de voz y chat que el bot utiliza. Rasa cuenta con algunos conectores preestablecidos para los canales más conocidos como Facebook Messenger, Telegram, Google Hangouts Chat o una pagina web propia. \cite{Credentials_Documentation}
 \subsubsection{Archivo domain}
 El archivo domain es un archivo de configuración donde se especifican las intenciones, entidades, slots, respuestas, formularios y acciones que el bot debe saber. \cite{Domain_Documentation}
 \subsubsection{Archivo endpoints}
@@ -160,7 +160,7 @@ o proveídos por otras librerías de terceros para extender funcionalidades
 \label{Estructura}
 \end{figure}
 \subsubsection{Tokenizadores}
-Antes de poder ser procesada una porción de texto debe ser dividida en porciones mas pequeñas, para esto se utiliza 
+Antes de poder ser procesada una porción de texto debe ser dividida en porciones más pequeñas, para esto se utiliza 
 un tokenizador (o tokenizer).   Este divide el texto en componentes de un vector.
 \subsubsection{Caracterizadores}
 Los caracterizadores generan pesos numéricos para ser consumidos por los modelos de ML. Existen dos tipos principales de
@@ -229,16 +229,16 @@ también el estado presente de la conversaciones para decidir que acción tomar,
 \textbf{Políticas basadas en Aprendizaje Automático:}
 \begin{itemize}
     \item \textbf{TED Policy:}
-    Es un conjunto de algoritmos desarrollados por RASA para la predicción de diálogo y reconocimiento de entidades. Su arquitectura se basa en transformadores que convierten el diálogo actual en un vector de diálogos, para compararlos con otros vectores en busca del mas cercano, a partir de las acciones existentes.\cite{TED_Policy}
-    \item \textbf{UnexpecTED Intent Policy:} Es una política auxiliar, tiene la misma arquitectura que TEDPolicy pero éste aprende cuales son las intenciones mas probables a ser expresadas según el contexto de la conversación. Siempre debe usarse en conjunto con al menos una otra política.\cite{UnexpecTED}
-    \item \textbf{Memoization Policy: }Esta política utiliza las historias y acciones de los datos de entrenamiento y las guarda en un diccionario, si la conversación actual no coincide con ningun ejemplo, predice un 0.0, se aplica cuando la los datos ingresados con similares a un historia existente.\cite{MemoizationPolicy}
+    Es un conjunto de algoritmos desarrollados por RASA para la predicción de diálogo y reconocimiento de entidades. Su arquitectura se basa en transformadores que convierten el diálogo actual en un vector de diálogos, para compararlos con otros vectores en busca del más cercano, a partir de las acciones existentes.\cite{TED_Policy}
+    \item \textbf{UnexpecTED Intent Policy:} Es una política auxiliar, tiene la misma arquitectura que TEDPolicy pero éste aprende cuales son las intenciones más probables a ser expresadas según el contexto de la conversación. Siempre debe usarse en conjunto con al menos una otra política.\cite{UnexpecTED}
+    \item \textbf{Memoization Policy: }Esta política utiliza las historias y acciones de los datos de entrenamiento y las guarda en un diccionario, si la conversación actual no coincide con ningun ejemplo, predice un 0.0, se aplica cuando la los datos ingresados son similares a un historia existente.\cite{MemoizationPolicy}
     \item \textbf{Augmented Memoization Policy: } Tiene las mismas funcionalidades de Memoization Policy, pero además cuenta con un mecanismo que permite olvidar de forma aleatoria algunas partes de la conversación, luego predice las acciones ya con la historia reducida.\cite{AugmentedMemoizationPolicy}
 \end{itemize}
 \textbf{Políticas basadas en Reglas:}
 \begin{itemize}
     \item \textbf{Rule Policy:} Realiza las predicciones basandose en reglas que se tienen en los datos de entramiento.
 \end{itemize}
-\indent Con cada interacción, las políticas definidas indican con un nivel de confianza cuál será la siguiente acción a ser tomada, aquella que tiene obtiene el mayor resultado sera la que decida la siguiente acción, en caso de que se prediga con la misma confianza, se tiene en cuenta la siguiente asignación de importancia.
+\indent Con cada interacción, las políticas definidas indican con un nivel de confianza cuál será la siguiente acción a ser tomada, aquella que tiene obtiene el mayor resultado será la que decida la siguiente acción, en caso de que se prediga con la misma confianza, se tiene en cuenta la siguiente asignación de importancia.
 \begin{itemize}
     \item 6 - RulePolicy
     \item 3 - MemoizationPolicy o AugmentedMemoizationPolicy
