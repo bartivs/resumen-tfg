@@ -149,8 +149,7 @@ El archivo domain es un archivo de configuración donde se especifican las inten
 Los endpoints son los enlaces a los servicios externos o internos que puede tener Rasa. En el se definen los servidores que corren o en los que están alojadas las acciones personalizadas, al igual que los modelos con los que se cuenta. También es aquí donde se especifican los tracker store, utilizados para guardar las conversaciones, y los event broker, encargados de conectar el bot con otros servicios que procesan los datos que llegan de las conversaciones.
 \subsection{Componentes}
 En esta sección estaremos describiendo el funcionamiento de los componentes
-utilizados en la arquitectura de Rasa, estos componentes son modulares y gené-
-ricos para lo que son sistemas de NLU modernos, pueden ser propios del entorno
+utilizados en la arquitectura de Rasa, estos componentes son modulares y genéricos para lo que son sistemas de NLU modernos, pueden ser propios del entorno
 o proveídos por otras librerías de terceros para extender funcionalidades
 \begin{figure}[H]
 \begin{centering}
@@ -191,7 +190,7 @@ Regulares o extractores basados en Aprendizaje Automático.
 \begin{tabular}{|l|l|l|}
 \hline
 \textbf{Clasificador}   & \textbf{Requisitos} & \textbf{Utiliza}                                                            \\ \hline
-MitieEntityExtractor    & MitieNLP            & \begin{tabular}[c]{@{}l@{}}Clasificación multiclase \\ con SVM\end{tabular} \\ \hline
+MitieEntityExtractor    & MitieNLP            & \begin{tabular}[c]{@{}l@{}}Clasificación multi-clase \\ con SVM\end{tabular} \\ \hline
 SpacyEntityExtractor    & SpacyNLP            & Modelo estadístico BILOU                                                    \\ \hline
 CRFEntityExtractor      & Tokens              & Campo aleatorio condicional (CRF)                                           \\ \hline
 DucklingEntityExtractor & Ninguno             & Expresiones regulares                                                       \\ \hline
@@ -204,7 +203,7 @@ RegexEntityExtractor    & Ninguno             & Tablas de búsqueda             
 \end{table}
 \subsubsection{Clasificador de Intenciones}
 Una vez que se generaron las características para todos los tokens y para toda la oración, podemos pasarlos a un
-modelo clasificador de intenciones para obtener la intencion detrás de cada mensaje de usuario y posteriormente poder brindarle una respuesta adecuada.
+modelo clasificador de intenciones para obtener la intención detrás de cada mensaje de usuario y posteriormente poder brindarle una respuesta adecuada.
 \begin{table}[h]
 \resizebox{0.49\textwidth}{!}{%
 \begin{tabular}{|l|l|l|}
@@ -219,7 +218,7 @@ FallbackClassifier           & Intents                 & \begin{tabular}[c]{@{}l
 \end{tabular}%
 }
 
-\caption{Clasificadores de intenciones. Elaboracion propia}
+\caption{Clasificadores de intenciones. Elaboración propia}
 \label{IntentClassifier}
 \end{table}
  \subsection{Predicción de Acciones}
@@ -231,12 +230,12 @@ también el estado presente de la conversaciones para decidir que acción tomar,
     \item \textbf{TED Policy:}
     Es un conjunto de algoritmos desarrollados por RASA para la predicción de diálogo y reconocimiento de entidades. Su arquitectura se basa en transformadores que convierten el diálogo actual en un vector de diálogos, para compararlos con otros vectores en busca del más cercano, a partir de las acciones existentes.\cite{TED_Policy}
     \item \textbf{UnexpecTED Intent Policy:} Es una política auxiliar, tiene la misma arquitectura que TEDPolicy pero éste aprende cuales son las intenciones más probables a ser expresadas según el contexto de la conversación. Siempre debe usarse en conjunto con al menos una otra política.\cite{UnexpecTED}
-    \item \textbf{Memoization Policy: }Esta política utiliza las historias y acciones de los datos de entrenamiento y las guarda en un diccionario, si la conversación actual no coincide con ningun ejemplo, predice un 0.0, se aplica cuando la los datos ingresados son similares a un historia existente.\cite{MemoizationPolicy}
+    \item \textbf{Memoization Policy: }Esta política utiliza las historias y acciones de los datos de entrenamiento y las guarda en un diccionario, si la conversación actual no coincide con ningún ejemplo, predice un 0.0, se aplica cuando la los datos ingresados son similares a un historia existente.\cite{MemoizationPolicy}
     \item \textbf{Augmented Memoization Policy: } Tiene las mismas funcionalidades de Memoization Policy, pero además cuenta con un mecanismo que permite olvidar de forma aleatoria algunas partes de la conversación, luego predice las acciones ya con la historia reducida.\cite{AugmentedMemoizationPolicy}
 \end{itemize}
 \textbf{Políticas basadas en Reglas:}
 \begin{itemize}
-    \item \textbf{Rule Policy:} Realiza las predicciones basandose en reglas que se tienen en los datos de entramiento.
+    \item \textbf{Rule Policy:} Realiza las predicciones basándose en reglas que se tienen en los datos de entrenamiento.
 \end{itemize}
 \indent Con cada interacción, las políticas definidas indican con un nivel de confianza cuál será la siguiente acción a ser tomada, aquella que tiene obtiene el mayor resultado será la que decida la siguiente acción, en caso de que se prediga con la misma confianza, se tiene en cuenta la siguiente asignación de importancia.
 \begin{itemize}
