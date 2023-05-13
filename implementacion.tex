@@ -25,7 +25,9 @@ sistema.
 	      Utiliza múltiples fuentes de información, como incrustaciones de palabras,
 	      incrustaciones de
 	      caracteres y etiquetas de partes del discurso. \cite{Configuration_Documentation}
-	\item \textbf{EntitySynonymMapper}: componente que mapea las entidades a su forma canónica. Esto puede ser útil para manejar variaciones en la forma en que se expresan las entidades o como se conocen en RASA 'sinónimos'\cite{Configuration_Documentation}
+	\item \textbf{EntitySynonymMapper}: componente que mapea las entidades a su forma canónica.
+	      Esto puede ser útil para manejar variaciones en la forma en que se expresan las entidades o como se
+	      conocen en RASA 'sinónimos'\cite{Configuration_Documentation}
 	\item \textbf{ResponseSelector}: componente que selecciona una respuesta basada en la
 	      entrada del
 	      usuario. Utiliza un enfoque basado en recuperación, donde coincide la entrada del
@@ -33,12 +35,19 @@ sistema.
 	      conjunto de respuestas predefinidas. Puede ser útil para manejar preguntas frecuentes
 	      o
 	      conversaciones informales.\cite{Configuration_Documentation}
-	\item \textbf{FallbackClassifier}: componente que clasifica los mensajes como fallback si no coinciden con ninguna de las intenciones en el modelo. Puede ser útil para manejar mensajes fuera de contexto o solicitudes que el modelo no está entrenado para manejar.\cite{Configuration_Documentation}
+	\item \textbf{FallbackClassifier}: componente que clasifica los mensajes como fallback si
+	      no coinciden con ninguna de las intenciones en el modelo. Puede ser útil para manejar mensajes
+	      fuera de contexto o solicitudes que el modelo no está entrenado para
+	      manejar.\cite{Configuration_Documentation}
 \end{itemize}
 \subsection{Docker}
 
-Para implemtar los servicios se usaron microcontenedores Docker, por lo que introduciremos
-brevemente los conceptos de esta tecnología.
+Existen varias implementaciones de contenedores para servidores como Docker, containerd, OpenVZ y
+HyperV. La mas utilizada en la industria y con mas variedad de servicios actualmente es
+Docker por lo que decidimos elegir esta herramienta para el desarrollo y despliegue de servicios del
+proyecto. Docker puede ser ejecutado sobre sistemas basados en Windows, Linux y macOS lo que
+facilita la igualdad de condiciones entre ambientes de desarrollo y producción, ademas es de uso
+libre y gratuito. \cite{alternativas_docker}
 
 \subsection{Contenedor}
 
@@ -47,11 +56,11 @@ cada componente del sistema base. Cada contenedor puede aislarse mediante funcio
 operativo llamadas cgroups y cnames logrando así aplicaciones en entornos aislados (sandbox en
 Ingles). \cite{Docker}
 \begin{figure}[H]
-\begin{centering}
-\includegraphics[angle=0,width=0.3\textwidth]{Figuras/docker-container.png}
-\par \end{centering}
-\caption[Contenedores]{Contenedores. \textbf{Fuente:} \cite{Docker}}
-\label{Contenedores}
+	\begin{centering}
+		\includegraphics[angle=0,width=0.3\textwidth]{Figuras/docker-container.png}
+		\par \end{centering}
+	\caption[Contenedores]{Contenedores. \textbf{Fuente:} \cite{Docker}}
+	\label{Contenedores}
 \end{figure}
 
 \subsection{Imagen de contenedor}
@@ -67,70 +76,104 @@ los contenedores para que estos puedan comunicarse mutuamente entre ellos y solo
 puertos necesarios para interactuar con el sistema en cuestión y esta es la opción utilizada en
 nuestra implementación. \cite{Docker}
 
-\subsection{Volumenes}
+\subsection{Volúmenes}
 Puesto que un contenedor no tiene un estado persistente sobre los datos que genera, se introducen
-los volúmenes, son la forma recomendada de agregar persistencia de datos a un contendedor de Docker. \cite{Docker}
+los volúmenes, son la forma recomendada de agregar persistencia de datos a un contendedor de
+Docker. \cite{Docker}
 \begin{figure}[H]
-\begin{centering}
-\includegraphics[angle=0,width=0.3\textwidth]{Figuras/docker-volume.png}
-\par \end{centering}
-\caption[Volumen]{Volumen. \textbf{Fuente:} \cite{Docker}}
-\label{Volumen}
+	\begin{centering}
+		\includegraphics[angle=0,width=0.3\textwidth]{Figuras/docker-volume.png}
+		\par \end{centering}
+	\caption[Volumen]{Volumen. \textbf{Fuente:} \cite{Docker}}
+	\label{Volumen}
 \end{figure}
 
 \subsection{Construcción}
-Las imágenes de Docker se construyen partir de instrucciones escritas en un archivo denominadado Dockerfile, generalmente de parte de una imagen base de la cual sé la adiciona lo necesario para ejecutar la aplicación.
+Las imágenes de Docker se construyen partir de instrucciones escritas en un archivo denominadado
+Dockerfile, generalmente de parte de una imagen base de la cual sé la adiciona lo necesario para
+ejecutar la aplicación.
 \cite{Docker}
 
 \subsection{Repositorios}
-Un repositorio de imágenes Docker (Docker Registry) es un servidor que almacena y distribuye imágenes versionadas generadas partir de un Dockerfile. Estos repositorios pueden ser públicos como
+Un repositorio de imágenes Docker (Docker Registry) es un servidor que almacena y distribuye
+imágenes versionadas generadas partir de un Dockerfile. Estos repositorios pueden ser públicos como
 DockerHub que es el oficial de la comunidad de Docker, como así también privado para un equipo de
 desarrollo en una institución. \cite{Docker}
 
 \subsection{Componentes}
-Cada componente del sistema se configuró en un contenedor de Docker con la excepción del servidor NGINX que si estaba instalado sobre el sistema operativo del servidor. 
+Cada componente del sistema se configuró en un contenedor de Docker con la excepción del servidor
+NGINX que si estaba instalado sobre el sistema operativo del servidor.
 \begin{figure}[H]
-\begin{centering}
-\includegraphics[angle=0,width=0.3\textwidth]{Figuras/server.png}
-\par \end{centering}
-\caption[Componentes del Sistema]{Componentes del Sistema. \textbf{Fuente:} Elaboración propia.}
-\label{Componentes}
+	\begin{centering}
+		\includegraphics[angle=0,width=0.3\textwidth]{Figuras/server.png}
+		\par \end{centering}
+	\caption[Componentes del Sistema]{Componentes del Sistema. \textbf{Fuente:} Elaboración propia.}
+	\label{Componentes}
 \end{figure}
 \subsection{Rasa Open Source}
-El contendedor de Rasa Open Source ejecuta una imagen oficial proveída por Rasa disponible en los repositorios de DockerHub \cite{DockerHub}, pero con el modelo entrenado y las configuraciones
-particulares al proyecto. Es el único contenedor que tiene un puerto externo para servir al usuario. También hace uso de los servicios de PosgresSQL y del servicio de acciones (action server).
+El contendedor de Rasa Open Source ejecuta una imagen oficial proveída por Rasa disponible en los
+repositorios de DockerHub \cite{DockerHub}, pero con el modelo entrenado y las configuraciones
+particulares al proyecto. Es el único contenedor que tiene un puerto externo para servir al
+usuario. También hace uso de los servicios de PosgresSQL y del servicio de acciones (action
+server).
 
 \subsection{Servidor de acciones}
-Servidor de acciones (acction server) es un servicio interno que ejecuta código escrito en Python este utiliza una imagen oficial para servicios Python disponible en los repositorios de
-DockerHub \cite{DockerHub}, estas son operaciones específicas para algunas acciones, una respuesta no estática, como por el ejemplo la acción relacionada con el cálculo de puntajes en el final de acuerdo a los puntajes en los exámenes parciales.
+Servidor de acciones (acction server) es un servicio interno que ejecuta código escrito en Python
+este utiliza una imagen oficial para servicios Python disponible en los repositorios de
+DockerHub \cite{DockerHub}, estas son operaciones específicas para algunas acciones, una respuesta
+no estática, como por el ejemplo la acción relacionada con el cálculo de puntajes en el final de
+acuerdo a los puntajes en los exámenes parciales.
 
 \subsection{PostgresSQL}
+En la documentación de Rasa, especifica que se necesita un almacenamiento para el registro de
+eventos (event broker) para su posterior análisis o también para el procesamiento de los eventos
+por otros
+servicios. Dependiendo de la demanda y el flujo de datos se pueden elegir Pika, Kafka y asi como
+el uso de Bases de datos basadas en SQL para el almacenamiento. \cite{event_broker} Como
+contábamos con experiencia previa en el uso de bases de datos utilizamos PostgresSQL que era una
+implementación ya conocida, ademas para el desarrollo las funcionalidades adicionales de  si bien
+podrían haber sido útiles agregarían complejidad innecesaria al sistema en fases iniciales y pueden
+ser adicionados posteriormente.
 PostgresSQL es un motor de base de datos del tipo relacional\cite{postgresql} el cual se configuró
-a partir de una imagen oficial de PostgresSQL disponible en los repositorios de DockerHub \cite{DockerHub}. Aparte de sus funciones de base de datos de sistema, también ejecutar un
-trabajo periódico (cada una hora) para realizar una copia actualizada de los contenidos de la tabla
-Eventos a un archivo separado por comas (csv) que se utiliza para retroalimentar las conversaciones y generar más datos para mejorar el modelo.
+a partir de una imagen oficial de PostgresSQL disponible en los repositorios de
+DockerHub\cite{DockerHub}. Aparte de sus funciones de base de datos de sistema, también ejecutar un
+trabajo periódico(cada una hora) para realizar una copia actualizada de los contenidos de la tabla
+Eventos a un archivo separado por comas(csv) que se utiliza para retroalimentar las conversaciones
+y generar más datos para mejorar el modelo.
 
 \subsection{NGINX}
-
+Para poder servir los archivos y la redirección interna de  las peticiones al servidor de Rasa Open
+Source se necesita un servidor WEB con estas características. Existen  varias implementaciones que
+pueden ser útiles como Apache, Caddy y NGINX. El mas utilizado en la industria es NGINX por lo que
+elegimos por su facilidad para configuración, amplia disponibilidad de documentación y asi como
+también ser el mas eficiente entre las demás opciones. \cite{web_servers}
 NGINX, es un servidor web que también puede ser usado como proxy reverso, que implica redirigir el
 tráfico a puertos internos y también para servir archivos que fueron las funciones utilizadas para
 el proyecto. Así como también puede ser utilizado como balanceador de carga, mail proxy y HTTP
-cache, entre otras funciones. \cite{NGINX}\\
-El servidor NGINX redirige el tráfico a la instancia de Rasa Open Source y también sirve el archivo de la copia más reciente de la tabla Eventos para agilizar las verificaciones de las respuestas y
+cache, entre otras funciones \cite{NGINX}
+El servidor NGINX redirige el tráfico a la instancia de Rasa Open Source y si como también sirve el
+archivo de
+la copia más reciente de la tabla Eventos para agilizar las verificaciones de las respuestas y
 preguntas recibidas.
-
 \subsection{Recursos}
-
 Para la puesta en producción del proyecto, se utilizó una instancia de Droplet alojado en Nueva
 York del proveedor DigitalOcean con un procesador con un 1vcpu(procesador virtualizado), 1 GB de
 RAM, 25 GB de almacenamiento y con un costo de entre 4 y 6 dólares americanos al mes dependiendo
 del tráfico presentado. Por las limitaciones de memoria del servidor se configuró también 4 GB de
 espacio de intercambio(SWAP) en el espacio de almacenamiento.
 
-\subsection{Telegram}
 
-Para habilitar pruebas para el público general se eligió Telegram, puesto que es bastante sencillo
-usar su servicio para conectar a implementaciones de chatbots y este no tiene costo de uso.
+\subsection{Telegram}
+Entre las opciones de interfaz existen dos opciones populares, implementar un cliente web o
+aplicación Movil, o integrarlo dentro de plataformas de mensajería existentes. Para evitar agregar
+complejidad al sistema decidimos optar por el uso de una plataforma existente. Si bien la plataforma
+de mensajería mas utilizada en nuestro medio es WhatsApp, esta presenta
+costos para el uso de su interfaz de programación por lo que fue descartada para la implementación del
+proyecto, la segunda mas utilizada es Telegram que debido a su una amplia comunidad
+para desarrollo de soluciones dentro de la plataforma puesto que es bastante sencillo
+usar su servicio para conectar a implementaciones de chatbots, ademas no requiere costos para el
+uso de su interfaz de programación por lo que consideramos que era la mejor opción para
+publicar la solución a los usuarios finales.
 \cite{botfather}
 
 \section{Resultados}
@@ -188,17 +231,22 @@ de entrenamiento y prueba de la siguiente forma:\\
 Rasa test proporciona herramientas que facilitan la detección y corrección de errores, incluye una
 matriz de confusión, un archivo .json de reporte, un histograma de confianza y un archivo .json de
 errores en caso de que existan.\\
-\indent La matriz de confusión es una herramienta fundamental que permite evaluar el rendimiento de un
-modelo, permite identificar los falsos positivos y falsos negativos, nos muestra en su eje vertical las etiquetas reales y en el eje horizontal las etiquetas predecidas, permitiendo identificar si
+\indent La matriz de confusión es una herramienta fundamental que permite evaluar el rendimiento de
+un
+modelo, permite identificar los falsos positivos y falsos negativos, nos muestra en su eje vertical
+las etiquetas reales y en el eje horizontal las etiquetas predecidas, permitiendo identificar si
 existen errores de clasificación.\\
-\indent Además, el script de rasa test guarda estos errores de clasificación en un archivo .json lo que
+\indent Además, el script de rasa test guarda estos errores de clasificación en un archivo .json lo
+que
 facilita el depurado y corrección de errores para mejorar la calidad de la clasificación.\\
 \indent El Histograma nos permite visualizar las predicciones del modelo y la confianza que ha sido
 otorgada a cada intención o entidad.\\
-\indent Las predicciones correctas se encuentran en la parte izquierda del gráfico y son representadas en
+\indent Las predicciones correctas se encuentran en la parte izquierda del gráfico y son
+representadas en
 color azul, mientras que las incorrectas se encuentran a la derecha y son de color rojo.\\
 \indent La ubicación de cada predicción en el eje horizontal del histograma representa el número de
-muestras, y en el eje vertical la confianza con la que el modelo ha realizado su predicción. \cite{interpretacion_graficos}
+muestras, y en el eje vertical la confianza con la que el modelo ha realizado su predicción.
+\cite{interpretacion_graficos}
 
 \subsubsection{Clasificador de Intenciones}
 Al analizar la matriz de confusión \ref{fig:intent_matriz} y el histograma
